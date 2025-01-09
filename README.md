@@ -1,11 +1,37 @@
 # Riemann-solver
 This project come form owner's project reports during studying Advanced Computational Fluid Dynamics (AAE6201-20241-A) in the Hong Kong Polytechnic University.
 
-1-D FDM Riemann solver for sod shock tube and 2-D FVM Riemann solver for bow shock. 
+This project includes two main parts, 1-D FDM Riemann solver for sod shock tube and 2-D FVM Riemann solver for bow shock. 
 
-![](./img/Project1.jpg)
+## 1-D sod shock tube
 
-![](./img/project1_space.png)
+We consider the 1D Euler equations governing the flow of an ideal gas:
 
+1. Conservation of mass:
+$$
+\begin{equation}
+       \frac{\partial \rho}{\partial t} + \frac{\partial (\rho u)}{\partial x} = 0 
+\end{equation}
+$$
 
+2. Conservation of momentum:
+$$
+\begin{equation}
+      \frac{\partial (\rho u)}{\partial t} + \frac{\partial (\rho u^2 + p)}{\partial x} = 0 
+\end{equation}
+$$
+
+3. Conservation of energy:
+$$
+\begin{equation}
+      \frac{\partial (\rho E)}{\partial t} + \frac{\partial (\rho u E + p)}{\partial x} = 0
+\end{equation}
+$$
+
+![](./img/Project1.jpg){:height="60%" width="60%"}
+
+## Simulation result
+![](./img/project1_space.png){:height="50%" width="50%"}
+
+## 2-D bow shock
 For more information please refer to ```./doc```.
