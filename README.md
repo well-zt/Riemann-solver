@@ -30,12 +30,11 @@ $$
       \frac{\partial (\rho E)}{\partial t} + \frac{\partial (\rho u E + p)}{\partial x} = 0
 \end{equation}
 $$
-<img src="./img/Project1.jpg" width="300" height="300" />
 
-![](./img/Project1.jpg =100x20)
+![](./img/Project1.jpg)
 
 ## Simulation result
-![](./img/project1_space.png =100x20)
+![](./img/project1_space.png)
 
 ## 2-D bow shock
 For more information please refer to ```./doc```.
