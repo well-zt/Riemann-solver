@@ -8,22 +8,26 @@ Numerical method for 1-D Riemann solver will be introduced briefly. For more inf
 ## Mathematical Derivation
 
 We consider the 1D Euler equations governing the flow of an ideal gas:
+![](./img/Project1.png)
 
 1. Conservation of mass:
+
 $$
 \begin{equation}
        \frac{\partial \rho}{\partial t} + \frac{\partial (\rho u)}{\partial x} = 0 
 \end{equation}
 $$
 
-2. Conservation of momentum:
+3. Conservation of momentum:
+
 $$
 \begin{equation}
       \frac{\partial (\rho u)}{\partial t} + \frac{\partial (\rho u^2 + p)}{\partial x} = 0 
 \end{equation}
 $$
 
-3. Conservation of energy:
+5. Conservation of energy:
+
 $$
 \begin{equation}
       \frac{\partial (\rho E)}{\partial t} + \frac{\partial (\rho u E + p)}{\partial x} = 0
@@ -45,56 +49,73 @@ According to the knowledge of gas dynamics, three types of waves may appear in t
 In this project we only consider a circumstance that expansion waves and shock wave occur at two end end of the shock tube and  propagate to different direction.
 The relationships can be categorized and written as follows for the shock wave at right and expansion waves at left :
 In Region 1 and 3
+
 $$
 \begin{equation}
     p^{*}/\left(\rho^{*L}\right)^{\gamma}=p_{1}/\left(\rho_{1}\right)^{\gamma}\\u_{1}+\frac{2c_{1}}{\gamma-1}=u^{*}+\frac{2c^{L}}{\gamma-1}
 \end{equation}
 $$
+
 in which 
+
 $$
 \begin{equation}
     c^{L}=\sqrt{\gamma p^{*}/\rho^{*L}}
 \end{equation}
 $$
+
 In Region 2 and 4
+
 $$
 \begin{equation}
     \begin{aligned}&\rho_{2}\left(u_{2}-Z_{2}\right)=\rho^{*R}\left(u^{*}-Z_{2}\right)\\&\rho_{2}u_{2}\left(u_{2}-Z_{2}\right)+p_{2}=\rho^{*R}u^{*}\left(u^{*}-Z_{2}\right)+p^{*}\\&E_{2}\left(u_{2}-Z_{2}\right)+u_{2}p_{2}=E^{*R}\left(u^{*}-Z_{2}\right)+p^{*}u^{*}\end{aligned}
 \end{equation}
 $$
+
 In this project, analytic solutions was calculated using Ho Taihsiang's code.
 ## Numerical simulation
 ### Basic equations
 The original equations can be written as follow:
+
 $$
 \begin{equation}
     \frac{\partial \mathbf{U}}{\partial t}+\frac{\partial \mathbf{F}}{\partial x}=0
 \end{equation}
 $$
+
 in which 
+
 $$
 \begin{equation}
    \mathbf{U}=\begin{bmatrix}\rho\\\rho u\\\rho E\end{bmatrix},
    \mathbf{F}=\begin{bmatrix}\rho u\\\rho u^2+p\\\rho uE+pu\end{bmatrix}
 \end{equation}
 $$
+
 set 
+
 $$
 A=\frac{\partial F}{\partial U}
 $$
+
 we have 
+
 $$
 \begin{equation}
     \frac{\partial\mathbf{U}}{\partial t}+A\frac{\partial\mathbf{U}}{\partial x}=0
 \end{equation}
 $$
+
 in which 
+
 $$
 \begin{equation}
     A=\begin{bmatrix}0&1&0\\\\\left(\frac{\gamma-3}2\right)u^2&(3-\gamma)u&\gamma-1\\\\(\gamma-1)u^3-\gamma uE&\gamma E-\frac{3(\gamma-1)}2u^2&\gamma u\end{bmatrix}
 \end{equation}
 $$
+
 it should be noticed that $E$ can be written as
+
 $$
 \begin{equation}
     E=\frac{p}{(\gamma-1)\rho}+\frac{u^2}{2}
@@ -103,23 +124,29 @@ $$
 
 assuming that the fluid is ideal gas.
 $A$ is diagonalizable, 
+
 $$
 \begin{equation}
     \mathbf{F}=R\Lambda^+R^{-1} \mathbf{U}+R\Lambda^-R^{-1} \mathbf{U}
 \end{equation}
 $$
+
 $$
 \begin{equation}
     \frac{\partial\mathbf{U}}{\partial t}+\frac{\partial\mathbf{F}^+}{\partial x}+\frac{\partial\mathbf{F}^-}{\partial x}=0
 \end{equation}
 $$
+
 where
+
 $$
 \begin{equation}
     \boldsymbol{F}^+=R\Lambda^+R^{-1} \mathbf{U},\quad\boldsymbol{F}^-=R\Lambda^-R^{-1} \mathbf{U}
 \end{equation}
 $$
+
 the right eigenvectors
+
 $$
 \begin{equation}
     \boldsymbol{R}=\begin{bmatrix}1&1&1\\u-a&u&u+a\\H-ua&u^2/2&H+ua\end{bmatrix}
