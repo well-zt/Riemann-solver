@@ -7,6 +7,9 @@ This project includes two main parts, 1-D FDM Riemann solver for sod shock tube 
 
 We consider the 1D Euler equations governing the flow of an ideal gas:
 
+![](./img/Project1.jpg)
+
+
 1. Conservation of mass:
 
 $$
@@ -30,8 +33,6 @@ $$
       \frac{\partial (\rho E)}{\partial t} + \frac{\partial (\rho u E + p)}{\partial x} = 0
 \end{equation}
 $$
-
-![](./img/Project1.jpg)
 
 ## Simulation result
 ![](./img/project1_space.png)
